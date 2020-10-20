@@ -1,4 +1,5 @@
-validates :title, presence: true
+class Song < ActiveRecord::Base
+  validates :title, presence: true
   validates :title, uniqueness: {
     scope: %i[release_year artist_name],
     message: 'cannot be repeated by the same artist in the same year'
@@ -16,3 +17,4 @@ validates :title, presence: true
   def released?
     released
   end
+end
